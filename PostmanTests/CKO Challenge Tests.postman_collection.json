@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "4d35b1c1-139c-4d3d-a8d2-ff00bb9fe9aa",
+		"name": "CKO Challenge Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19519952"
+	},
+	"item": [
+		{
+			"name": "SuccessfulPayment_01",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"cardNumber\":\"4111111111111111\",\r\n   \"cardHolderNames\":\"Test Tester\",\r\n   \"cardExpirationMonth\":12,\r\n   \"cardExpirationYear\":22,\r\n   \"currencyCode\":\"GBP\",\r\n   \"paymentAmount\":499.0,\r\n   \"cVV\":\"111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:42963/payment/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "42963",
+					"path": [
+						"payment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FailedPayment_InsufficientAmountInBankAccount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"cardNumber\":\"4111111111111111\",\r\n   \"cardHolderNames\":\"Test Tester\",\r\n   \"cardExpirationMonth\":12,\r\n   \"cardExpirationYear\":22,\r\n   \"currencyCode\":\"GBP\",\r\n   \"paymentAmount\":600.0,\r\n   \"cVV\":\"111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:42963/payment/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "42963",
+					"path": [
+						"payment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidationErrorsFromDataAnnotations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"cardNumber\":\"111111111111111122222222222222222\",\r\n   \"cardHolderNames\":\"Test TesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTesterTester\",\r\n   \"cardExpirationMonth\":12,\r\n   \"cardExpirationYear\":22,\r\n   \"currencyCode\":\"GBPPPPPPPPP\",\r\n   \"paymentAmount\":200.0,\r\n   \"cVV\":\"111111111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:42963/payment/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "42963",
+					"path": [
+						"payment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidationFailed_ExpirationMonth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"cardNumber\":\"4111111111111111\",\r\n   \"cardHolderNames\":\"Test Tester\",\r\n   \"cardExpirationMonth\":4,\r\n   \"cardExpirationYear\":22,\r\n   \"currencyCode\":\"GBP\",\r\n   \"paymentAmount\":600.0,\r\n   \"cVV\":\"111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:42963/payment/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "42963",
+					"path": [
+						"payment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FailedValidation_ExpirationYear",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"cardNumber\":\"4111111111111111\",\r\n   \"cardHolderNames\":\"Test Tester\",\r\n   \"cardExpirationMonth\":9,\r\n   \"cardExpirationYear\":21,\r\n   \"currencyCode\":\"GBP\",\r\n   \"paymentAmount\":600.0,\r\n   \"cVV\":\"111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:42963/payment/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "42963",
+					"path": [
+						"payment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPayment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:42963/payment/22BF3F83-ADE2-4EAC-8139-176B28C2886E",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "42963",
+					"path": [
+						"payment",
+						"22BF3F83-ADE2-4EAC-8139-176B28C2886E"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
